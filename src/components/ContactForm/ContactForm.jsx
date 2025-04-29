@@ -1,41 +1,39 @@
-import { nanoid } from "@reduxjs/toolkit";
+//import { nanoid } from "@reduxjs/toolkit";
 import css from "./ContactForm.module.css"
-import { useId } from "react";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsSlice";
+import { addContact } from "../../redux/contactsSlice"
+import { nanoid } from "@reduxjs/toolkit";
 
 
 
 export default function ContactForm () {
 
-  const nameId = useId();
-  const numberId = useId();
-
+  
   const dispatch = useDispatch();
-
   const handleSubmit = event => {
     event.preventDefault();
     const form = event.target;
-    
-    dispatch(addContact({
-	    id: nanoid(),
-	    name: form.elements.name.value,
-      number: form.elements.namber.value,
-	  }));
+    const newContact = {
+      id: nanoid(),
+      name: form.elements.name.value,
+      number: form.elements.number.value,
+     }
+    console.log(newContact) 
+    dispatch( addContact(newContact))
     form.reset();
   };
-    
+
 
     return (
       <>
-        <form onSubmit={handleSubmit} className={css.form}>
-          <label htmlFor={nameId}>
+        <form className={css.form} onSubmit={handleSubmit}>
+          <label>
             <span className={css.label}>Name:</span>
-            <input className={css.input} type="text" name="name" id={nameId} />
+            <input className={css.input} type="text" name="name" />
           </label>
-          <label htmlFor={numberId}>
+          <label>
             <span className={css.label}>Number:</span>
-            <input className={css.input} type="text" name="number" id={numberId}/>
+            <input className={css.input} type="text" name="number" />
           </label>
           <button className={css.btn} type="submit">Add contact</button>
         </form>
