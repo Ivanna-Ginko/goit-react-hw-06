@@ -4,14 +4,11 @@ import {createSlice} from "@reduxjs/toolkit"
 const slice = createSlice({
     name : "contacts",
     initialState: {
-        
-            contacts: {
-                items: []
-          
-        }},
+          items: []
+        },
         reducers: {
             addContact : (state, action) => {
-                state.contacts.items.push(action.payload)
+                state.items.push(action.payload)
             },
             deleteContact: (state,action) => {
                 console.log(action.payload)
