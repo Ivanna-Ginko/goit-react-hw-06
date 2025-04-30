@@ -13,7 +13,7 @@ const filterArr = (arr, fil)=>{
 
  function ContactList () {
   const contacts = useSelector((state) => state.contacts.items);
-  const filter = useSelector((state) => state.filter.filters.name);
+  const filter = useSelector((state) => state.filter.name);
  
   const filterContacts = filterArr(contacts, filter)
 
