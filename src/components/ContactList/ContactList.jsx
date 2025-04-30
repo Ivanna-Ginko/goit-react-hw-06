@@ -3,6 +3,9 @@ import css from "./ContactList.module.css"
 import { useSelector } from 'react-redux';
 
 const filterArr = (arr, fil)=>{
+
+  if (!arr) {return []}
+  if (!fil) {return arr}
  
   return arr.filter(ar=>ar.name.toLowerCase().includes(fil.toLowerCase()))
 }
